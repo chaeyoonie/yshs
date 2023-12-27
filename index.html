@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜별 탄생화 찾기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>날짜별 탄생화 찾기</h1>
+    <p>생일을 입력하세요:</p>
+    <input type="date" id="birthday">
+    <button onclick="findBirthFlower()">탄생화 찾기</button>
+    <p id="result"></p>
+
+    <script>
+        function findBirthFlower() {
+            const birthday = new Date(document.getElementById('birthday').value);
+            const month = birthday.getMonth() + 1; // getMonth()는 0부터 시작하기 때문에 1을 더합니다.
+            const date = birthday.getDate(); // 해당 월의 몇 번째 날인지 가져옵니다.
+
+            let flower = '';
+            switch(month) {
+                case 1:
+                    if (date <= 20) flower = '장미';
+                    else flower = '프리지아';
+                    break;
+                case 2:
+                    if (date <= 19) flower = '프리지아';
+                    else flower = '데이지';
+                    break;
+                case 3:
+                    if (date <= 20) flower = '데이지';
+                    else flower = '튤립';
+                    break;
+                case 4:
+                    if (date <= 20) flower = '튤립';
+                    else flower = '라일락';
+                    break;
+                case 5:
+                    if (date <= 21) flower = '라일락';
+                    else flower = '장미';
+                    break;
+                case 6:
+                    if (date <= 21) flower = '장미';
+                    else flower = '튤립';
+                    break;
+                case 7:
+                    if (date <= 22) flower = '튤립';
+                    else flower = '프리지아';
+                    break;
+                case 8:
+                    if (date <= 22) flower = '프리지아';
+                    else flower = '코스모스';
+                    break;
+                case 9:
+                    if (date <= 22) flower = '코스모스';
+                    else flower = '캘린더';
+                    break;
+                case 10:
+                    if (date <= 23) flower = '캘린더';
+                    else flower = '카네이션';
+                    break;
+                case 11:
+                    if (date <= 22) flower = '카네이션';
+                    else flower = '피오니';
+                    break;
+                case 12:
+                    if (date <= 21) flower = '피오니';
+                    else flower = '장미';
+                    break;
+                default:
+                    flower = '정보 없음';
+            }
+
+            document.getElementById('result').innerText = `${month}월 ${date}일의 탄생화는 ${flower}입니다.`;
+        }
+    </script>
+</body>
+</html>
